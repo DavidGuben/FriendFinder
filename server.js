@@ -14,14 +14,13 @@ app.use(bodyParser.text());
 app.use(bodyParser.json({type:'application/vnd.api+json'}));
 app.use(express.static(process.cwd() + '/public'));
 
-app.get('/survey', function(req, res) {
-  res.sendFile(path.join(__dirname, './app/public/survey.html'));
-});
-
 app.get('/', function(req, res){
 	res.sendFile(path.join(__dirname, 'app/public/home.html'));
 })
 
+app.get('/survey', function(req, res) {
+  res.sendFile(path.join(__dirname, './app/public/survey.html'));
+});
 app.listen(PORT, function(){
 	console.log('App listening on PORT ' + PORT);
 });
