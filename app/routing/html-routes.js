@@ -1,22 +1,6 @@
-<<<<<<< HEAD
-app.get('/survery', function(req, res) {
+var routes = require('./server');
+app.use('/', routes)
 
-    var html = '<h1> Friend Finder Survey </h1>';
-
-        html += '<select id ="q1">';
-          html += '<input>option 1</input>';
-          html += '<input>option 2</input>';
-          html += '<input>option 3</input>';
-          html += '<input>option 4</input>';
-          html += '<input>option 5</input>';
-        html += '</select>';
-})
-=======
-app.get('/', function(req, res){
-	res.sendFile(path.join(__dirname, '/app/public/home.html'));
+app.get('/survey', function(req, res) {
+  res.sendFile(path.join(__dirname, '../public/survey.html'));
 });
-
-app.get('/survery', function(req, res) {
-  res.sendFile(path.join(__dirname, '/app/public/survey.html'));
-});
->>>>>>> f382ff56d880e92ecfb9531f3d53d118d88b4c35
