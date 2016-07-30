@@ -9,8 +9,4 @@ app.get('/survery', function(req, res) {
           html += '<input>option 4</input>';
           html += '<input>option 5</input>';
         html += '</select>';
-
-
-
-
 })
