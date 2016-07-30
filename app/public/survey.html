@@ -7,8 +7,9 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </head>
 <body>
-  <div class="container">
-    <h1>Survey Questions</h1>
+  <div class="container" style="text-align:center;">
+    <h1><strong>Survey Questions</strong></h1>
+    <hr/>
     <div class="row">
       <div class="col-lg-12">
         <h3><strong>Question 1</strong></h3>
@@ -178,7 +179,26 @@
                   </select>
                 </div>
               </div>
-              <button type="submit" class="btn btn-primary btn-lg btn-block" id="submit" style="margin-top:20px;margin-bottom:30px;">Submit</button>
+              <button type="submit" class="btn btn-primary btn-lg btn-block" id="submit" style="margin-top:20px;margin-bottom:30px;" data-toggle="modal" data-target="#myModal">Submit</button>
     </div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
 </body>
 </html>
