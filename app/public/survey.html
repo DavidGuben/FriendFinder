@@ -179,9 +179,9 @@
                   </select>
                 </div>
               </div>
-              <form method="GET">
+
               <button type="submit" class="btn btn-primary btn-lg btn-block" id="submit" style="margin-top:20px;margin-bottom:30px;" data-toggle="modal" data-target="#myModal">Submit</button>
-              </form>
+
     </div>
 
 <!-- Modal -->
@@ -202,7 +202,7 @@
     </div>
   </div>
 </div>
-<script type="javascript">
+<script>
 $("#submit").on("click", function(){
   console.log("this works");
   // Store users response in an object
@@ -211,12 +211,13 @@ $("#submit").on("click", function(){
   }
 
   // Send data to friends.js in data folder
-  var thisURL = window.location.origin;
+  var thisURL = 'http://localhost:3000/data/friends';
+  console.log(thisURL);
 
   // push data to api via AJAX
-  $.post(thisURL + "data/friends", userRes, function(data){
+  $.post(thisURL, userRes, function(data){
     $("#resultsModal").modal('toggle');
-  })
+  });
 
 })
 </script>
