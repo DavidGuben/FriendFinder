@@ -1,5 +1,6 @@
 var path = require('path');
 
+
 module.exports = function (app) {
 // This will be used to display a JSON of all possible friends.
 app.get('/data/friends', function(req, res) {
@@ -19,26 +20,6 @@ app.post('/data/friends', function(req, res) {
 	//		* Total Difference: 2 + 1 + 2 = 5
 	// * Remember to use the absolute value of the differences. Put another way: no negative solutions! Your app should calculate both 5-3 and 3-5 as 2, and so on.
 	// * The closest match will be the user with the least amount of difference.
-
-  // Add a click event for the submit button
-  $("#submit").on("click", function(){
-
-    // Store users response in an object
-    var userRes = {
-
-    }
-
-
-
-  })
-
-
-
-
-
-
-
-
 
 
 });
