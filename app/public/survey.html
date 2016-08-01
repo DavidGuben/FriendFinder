@@ -208,12 +208,33 @@ $("#submit").on("click", function(){
   var userRes = {
     scores: [$("#q1").val(), $("#q2").val(), $("#q3").val(), $("#q4").val(), $("#q5").val(), $("#q6").val(), $("#q7").val(), $("#q8").val(), $("#q9").val(),$("#q10").val(), ],
   }
-  console.log(userRes.scores);
 
   // Send data to friends.js in data folder
   var thisURL = 'http://localhost:3000/data/friends';
-
   var userData = userRes.scores;
+
+  for (i = 0; i < userData.length; i++) {
+     console.log(userData[i]);
+  }
+
+  var diff = $(userData[i]).not(["2","3","4","5","2","3","4","5","2","3"]).get();
+  console.log(diff);
+
+
+
+//   Array.prototype.diff = function(a) {
+//     return this.filter(function(i) {return a.indexOf(i) < 0;});
+// };
+//
+// ////////////////////
+// // Examples
+// ////////////////////
+//
+// [1,2,3,4,5,6].diff( [3,4,5] );
+// // => [1, 2, 6]
+//
+// ["test1", "test2","test3","test4","test5","test6"].diff(["test1","test2","test3","test4"]);
+// // => ["test5", "test6"]
 
   console.log("====variable tests===");
 
@@ -250,10 +271,7 @@ $("#submit").on("click", function(){
   type: "POST",
   url: thisURL,
   data: JSON.stringify(userData),
-  success: function(data) {
-    console.log('success');
-    console.log(JSON.stringify(data));
-}
+  success: userData
 });
 
 })
