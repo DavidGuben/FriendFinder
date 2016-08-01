@@ -15,7 +15,7 @@
         <h3><strong>Question 1</strong></h3>
         <h4>Your mind is always buzzing with unexplored ideas and plans.</h4>
           <select id="q1">
-            <option>
+            <option value="0">
               Choose an option
             </option>
             <option value="1">1 (Strongly Disagree)</option>
@@ -32,7 +32,7 @@
           <h3><strong>Question 2</strong></h3>
           <h4>You love to code.</h4>
           <select id="q2">
-            <option>
+            <option value="0">
               Choose an option
             </option>
             <option value="1">1 (Strongly Disagree)</option>
@@ -49,7 +49,7 @@
           <h3><strong>Question 3</strong></h3>
           <h4>Your always ready to do something spontaneous.</h4>
           <select id="q3">
-            <option>
+            <option value="0">
               Choose an option
             </option>
             <option value="1">1 (Strongly Disagree)</option>
@@ -66,7 +66,7 @@
             <h3><strong>Question 4</strong></h3>
             <h4>You are very imaginative.</h4>
             <select id="q4">
-              <option>
+              <option value="0">
                 Choose an option
               </option>
               <option value="1">1 (Strongly Disagree)</option>
@@ -83,7 +83,7 @@
             <h3><strong>Question 5</strong></h3>
             <h4>You love to travel.</h4>
             <select id="q5">
-              <option>
+              <option value="0">
                 Choose an option
               </option>
               <option value="1">1 (Strongly Disagree)</option>
@@ -100,7 +100,7 @@
               <h3><strong>Question 6</strong></h3>
               <h4>People rarely upset you.</h4>
               <select id="q6">
-                <option>
+                <option value="0">
                   Choose an option
                 </option>
                 <option value="1">1 (Strongly Disagree)</option>
@@ -117,7 +117,7 @@
               <h3><strong>Question 7</strong></h3>
               <h4>You read at least a book a week.</h4>
               <select id="q7">
-                <option>
+                <option value="0">
                   Choose an option
                 </option>
                 <option value="1">1 (Strongly Disagree)</option>
@@ -134,7 +134,7 @@
                 <h3><strong>Question 8</strong></h3>
                 <h4>You feel you need time alone to recharge.</h4>
                 <select id="q8">
-                  <option>
+                  <option value="0">
                     Choose an option
                   </option>
                   <option value="1">1 (Strongly Disagree)</option>
@@ -151,7 +151,7 @@
                 <h3><strong>Question 9</strong></h3>
                 <h4>You surround yourself with a lot of friends.</h4>
                 <select id="q9">
-                  <option>
+                  <option value="0">
                     Choose an option
                   </option>
                   <option value="1">1 (Strongly Disagree)</option>
@@ -168,7 +168,7 @@
                   <h3><strong>Question 10</strong></h3>
                   <h4>You feel that people should always tell you how they actually feel.</h4>
                   <select id="q10">
-                    <option>
+                    <option value="0">
                       Choose an option
                     </option>
                     <option value="1">1 (Strongly Disagree)</option>
@@ -204,20 +204,57 @@
 </div>
 <script>
 $("#submit").on("click", function(){
-  console.log("this works");
   // Store users response in an object
   var userRes = {
     scores: [$("#q1").val(), $("#q2").val(), $("#q3").val(), $("#q4").val(), $("#q5").val(), $("#q6").val(), $("#q7").val(), $("#q8").val(), $("#q9").val(),$("#q10").val(), ],
   }
+  console.log(userRes.scores);
 
   // Send data to friends.js in data folder
   var thisURL = 'http://localhost:3000/data/friends';
+
+  var userData = userRes.scores;
+
+  console.log("====variable tests===");
+
   console.log(thisURL);
+  console.log(userData);
+
+  console.log("====variable tests===");
+
 
   // push data to api via AJAX
-  $.post(thisURL, userRes, function(data){
-    $("#resultsModal").modal('toggle');
-  });
+  // $.post(thisURL, userRes, function(data){
+  //   $("#resultsModal").modal('toggle');
+  // });
+
+//   var options = {};
+//
+// $('#mySelect option').each(function(){
+//     options[$(this).text()] = $(this).val();
+// });
+//
+// console.log(options);
+//
+// //or the other way round
+//
+// var options2 = {};
+//
+// $('#mySelect option').each(function(){
+//     options2[$(this).val()] = $(this).text();
+// });
+//
+// console.log(options2);
+
+  $.ajax({
+  type: "POST",
+  url: thisURL,
+  data: JSON.stringify(userData),
+  success: function(data) {
+    console.log('success');
+    console.log(JSON.stringify(data));
+}
+});
 
 })
 </script>
