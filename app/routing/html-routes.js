@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 app.get('/survery', function(req, res) {
 
     var html = '<h1> Friend Finder Survey </h1>';
@@ -11,7 +10,7 @@ app.get('/survery', function(req, res) {
           html += '<input>option 5</input>';
         html += '</select>';
 })
-=======
+
 app.get('/', function(req, res){
 	res.sendFile(path.join(__dirname, '/app/public/home.html'));
 });
@@ -19,4 +18,3 @@ app.get('/', function(req, res){
 app.get('/survery', function(req, res) {
   res.sendFile(path.join(__dirname, '/app/public/survey.html'));
 });
->>>>>>> f382ff56d880e92ecfb9531f3d53d118d88b4c35
