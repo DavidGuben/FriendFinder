@@ -1,52 +1,26 @@
-    // Capture the form inputs
-    $("#submit").on("click", function(){
+var path = require('path');
 
-    	// Form validation
-    	function validateForm() {
-		  var isValid = true;
-		  $('.form-control').each(function() {
-		    if ( $(this).val() === '' )
-		        isValid = false;
-		  });
+var friends = [
+  {
+  name: "Dummy",
+  scores: [3,2,4,5,1,2,4,5,3,2]
+  },
+]
 
-		  $('.chosen-select').each(function() {
+module.exports = function (app) {
+// This will be used to display a JSON of all possible friends.
+app.get('/data/friends', function(req, res) {
+  res.sendFile(path.join(__dirname, '../data/friends.js'));
+});
 
-		  	if( $(this).val() === "")
-		  		isValid = false
-		  })
-		  return isValid;
-		}
+// This will be used to handle incoming survey results. This route will also be used to handle the compatibility logic.
+app.post('/data/friends', function(req, res) {
 
-		// If all required fields are filled
-		if (validateForm() == true)
-		{
-			// Create an object for the user's data
-	    	var userData = {
-	    		name: $("#name").val(),
-	    		photo: $("#photo").val(),
-	    		scores: [$("#q1").val(), $("#q2").val(), $("#q3").val(), $("#q4").val(), $("#q5").val(), $("#q6").val(), $("#q7").val(), $("#q8").val(), $("#q9").val(), $("#q10").val(), ]
-	    	}
+  var newFriend = req.body;
+  console.log(req.body);
+  friends.push(newFriend);
+  res.json(newFriend);
+  console.log(friends);
 
-
-	    	// Grab the URL of the website
-	    	var currentURL = window.location.origin;
-
-	    	// AJAX post the data to the friends API.
-	    	$.post(currentURL + "/api/friends", userData, function(data){
-
-	    		// Grab the result from the AJAX post so that the best match's name and photo are displayed.
-	    		$("#matchName").text(data.name);
-	    		$('#matchImg').attr("src", data.photo);
-
-		    	// Show the modal with the best match
-		    	$("#resultsModal").modal('toggle');
-
-	    	});
-		}
-		else
-		{
-			alert("Please fill out all fields before submitting!");
-		}
-
-    	return false;
-    });
+});
+};
